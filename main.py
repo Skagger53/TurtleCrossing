@@ -79,7 +79,7 @@ else:
             screen.onkeypress(lambda: therese.move_right() if therese.get_x() < 240 else None, "d")
             screen.onkeypress(lambda: therese.move_right() if therese.get_x() < 240 else None, "D")
 
-            screen.onkeypress(pause_game, " ") # Pause
+            screen.onkeypress(pause_game, "space") # Pause
 
             # Quitting
             screen.onkeypress(end_game, "q")
