@@ -10,6 +10,7 @@ else:
     from vehicles import Car
     from scorekeeper import Scorekeeper, give_answer
     from start_menu import starting_screen
+    from sidewalks import draw_sidewalks
 
     def setup_level(roads_crossed, lives_lost): # Setting up the level. Game doesn't start yet.
         stevie_the_scorekeeper.score_change(roads_crossed, lives_lost, 0, 0, difficulty)
@@ -21,7 +22,7 @@ else:
 
         # Setting each lane's speed, based on difficulty. Here the min 2, max 10.
         speeds = {} # Lane speed is saved to this dictionary. Key is y-coordinate for that lane. Value is the speed. Used in Car.move()
-        for speed in lanes: speeds[speed] = random.randint(2, difficulty * 2 + 4)
+        for speed in lanes: speeds[speed] = random.randint(difficulty + 1, difficulty + 5)
 
         # Places all vehicles initially.
         car_lines = 8 # How many cars are in each lane
@@ -125,6 +126,7 @@ else:
 
     if difficulty != 5: quit = False # If starting_screen() returns 5, the user clicked "Quit"
     while quit == False:
+        draw_sidewalks(difficulty)
         traffic, speeds = setup_level(roads_crossed, lives_lost) # Initial setup screen/game intro. Returns all car classes in "traffic" list and a dictionary of all randomly selected lane speeds.
         roads_crossed, lives_lost, quit = main_game(roads_crossed, lives_lost, traffic, speeds, answers) # Starts the game running. Each time a level is completed, the score for roads crossed and car confrontations is returned along with quit as False or True to continue or stop playing.
         for vehicle in traffic: # Removes turtles from being visible on the screen and deletes them from memory. They are recreated from scratch at the start of each new level. This allows for variety in lane speeds and the order of vehicles (by their length)
