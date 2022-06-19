@@ -1,5 +1,5 @@
 # TurtleCrossing
-Therese the Turtle road crossing to answer that age-old question...
+Therese the Turtle crossing the road to answer that age-old question...
 
 Has only one real dependency that requires installation: PIL (ImageTk, Image)
 
