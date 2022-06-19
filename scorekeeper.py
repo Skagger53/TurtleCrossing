@@ -2,7 +2,6 @@ if __name__ == "__main__": print("This is a supporting file. Do not execute dire
 else:
     import random
     from turtle import Turtle
-    from sidewalks import draw_sidewalks
 
     class Scorekeeper(Turtle): # The scorekeeping turtle. Keeps track of roads crossed and car confrontations.
         def __init__(self):
@@ -16,7 +15,7 @@ else:
         def score_change(self, roads_crossed, car_confrontations, new_roads_crossed, new_car_confrontations, difficulty): # Updates the score. Arguments are current scores and changes to the score.
             roads_crossed += new_roads_crossed
             car_confrontations += new_car_confrontations
-            draw_sidewalks(difficulty) # Draws sidewalks, including median for easier difficulties.
+            self.scoring_turtle.clear()
             self.scoring_turtle.write(f"Roads crossed: {roads_crossed} Car confrontations: {car_confrontations}", font=("Arial", 10, "bold")) # Writes the new score.
             return roads_crossed, car_confrontations # Returns the updated score
 
